@@ -13,10 +13,11 @@ import Model.User;
 
 public class First {
     Scanner scan = new Scanner(System.in);
+    int id = scan.nextInt();
     String userName = scan.next();
     String password = scan.next();
     int age = scan.nextInt();
-    User user = new User(userName, password, age);
+    User user = new User(id,userName, password, age);
     
     public void saveData() {
         StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build(); 

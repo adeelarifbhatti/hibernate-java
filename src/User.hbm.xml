@@ -2,10 +2,15 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
   
  <hibernate-mapping>  
-  <class name="Model.User" table="user">  
+  <class name="Model.User" table="user"> 
+      <id name="id">  
+     <generator class="assigned"></generator>  
+    </id>   
 
-    <property name="userName"> </property>  
-    <property name="password"> </property>
+    <property name="userName"></property> 
+    
+
+    <property name="password"></property>
     <property name="age"> </property>  
             
   </class>  
