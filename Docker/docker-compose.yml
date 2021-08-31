@@ -8,6 +8,8 @@ services:
     - backend
   depends_on:
     - backend
+  stdin_open: true # docker run -i
+  tty: true
  backend:
    image: mysql:5.7
    restart: always
