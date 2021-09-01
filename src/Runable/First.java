@@ -1,5 +1,6 @@
 package Runable;
 import java.util.Scanner;
+import myHibernate.HibernateUtilities;
 
 import org.hibernate.Session;    
 import org.hibernate.SessionFactory;    
@@ -19,16 +20,12 @@ public class First {
     int age = scan.nextInt();
     User user = new User(id,userName, password, age);
     
-    public void saveData() {
-        StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build(); 
-        Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();  
-        SessionFactory factory = meta.getSessionFactoryBuilder().build();  
-        Session session = factory.openSession();  
+    public void saveData() { 
+        Session session = HibernateUtilities.getSessionFactory().openSession();  
         Transaction t = session.beginTransaction(); 
         session.save(user);
         t.commit();
         System.out.println("Stored in MySQL");    
-        factory.close();  
         session.close();         
     }
     public static void main(String args[]) {
