@@ -10,6 +10,7 @@
         <property name="connection.url">jdbc:mysql://backend:3306/dataset</property>  
         <property name="connection.username">username</property>  
         <property name="connection.password">password</property>  
+      <!-- For creating schema, depends on version  <property name="hbm2ddl.auto">create</property>--> 
     <mapping resource="User.hbm.xml"/>  
     </session-factory>  
   
