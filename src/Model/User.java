@@ -4,16 +4,16 @@ public class User {
 	int id;
 	String userName;
 	String password;
-	int age;
 	
-	public User() {
-		
+	private EncryptedPassword ePassword= new EncryptedPassword();
+	
+	public User() {		
 	}
-	public User(int id, String userName, String password, int age) {
+	
+	public User(int id, String userName, String password) {
 		this.id=id;
 		this.userName=userName;
-		this.password= password;
-		this.age=age;		
+		this.password= password;	
 	}
 
 	public int getId() {
@@ -40,13 +40,12 @@ public class User {
 		this.password = password;
 	}
 
-	public int getAge() {
-		return age;
+	public EncryptedPassword getePassword() {
+		return ePassword;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setePassword(EncryptedPassword ePassword) {
+		this.ePassword = ePassword;
 	}
-	
 
 }

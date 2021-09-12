@@ -1,7 +1,5 @@
 package Runable;
 import java.util.Scanner;
-import myHibernate.HibernateUtilities;
-
 import org.hibernate.Session;    
 import org.hibernate.SessionFactory;    
 import org.hibernate.Transaction;  
@@ -12,11 +10,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.User;  
+import Model.User;
+import myHibernate.HibernateUtilities;  
 
 public class First {
-    String userName, password;
-    int id,age;
+    String userName, password,ePass;
+    int id;
 	public void start() {
 	    Scanner scan = new Scanner(System.in);
 	    String line = scan.next();
@@ -26,7 +25,7 @@ public class First {
 		    id = Integer.parseInt(values[1]);
 		    userName = values[2];
 		    password = values[3];
-		    age = Integer.parseInt(values[4]);
+		    ePass = values[4];
 	    }
 	    else if(values[0].equals("get")) {	    	
 	    	id = Integer.parseInt(values[1]);
@@ -36,7 +35,8 @@ public class First {
     	if(userName!=null) {
         Session session = HibernateUtilities.getSessionFactory().openSession();  
         Transaction t = session.beginTransaction(); 
-        User user = new User(id,userName, password, age);
+        User user = new User(id,userName, password);
+        user.getePassword().setEncryptedPassword(ePass);
         session.save(user);
         t.commit();
         System.out.println("Stored in MySQL"); 
@@ -47,8 +47,8 @@ public class First {
 	    	Transaction t = session.beginTransaction();
 	    	User user= (User) session.get(User.class, id);
 	    	System.out.println("Geting the user out");
-	    	System.out.println("Userid is "+user.getId()+" UserName is "+user.getUserName() +" password is "+user.getPassword()+" age is "
-	    	+user.getAge());
+	    	System.out.println("Userid is "+user.getId()+" UserName is "+user.getUserName() +" password is "+user.getPassword()
+	    	+" EncryptedPassword is "+user.getePassword().getEncryptedPassword());
 	        System.out.println("printing from MySQL");    
 	        session.close();  
 	    	}

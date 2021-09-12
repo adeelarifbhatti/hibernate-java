@@ -11,7 +11,9 @@
     
 
     <property name="password"></property>
-    <property name="age"> </property>  
+    <component name="ePassword">
+   		 <property name="encryptedPassword"> </property>  
+    </component>
             
   </class>  
  </hibernate-mapping>
